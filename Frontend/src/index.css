@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { --radius: 0.875rem; }
+  * { @apply border-slate-200 dark:border-slate-800; }
+  html { scroll-behavior: smooth; }
+  body { @apply min-h-screen bg-slate-50 font-sans text-slate-900 antialiased selection:bg-blue-200 selection:text-slate-950 dark:bg-slate-950 dark:text-slate-100 dark:selection:bg-blue-900; }
+  button, a, input, select, textarea { @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-50 dark:focus-visible:ring-offset-slate-950; }
+}
+
+@layer components {
+  .app-shell { @apply min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100; }
+  .surface { @apply border border-slate-200/80 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900; }
+  .page-frame { @apply mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8; }
+
+  .brand-marquee .swiper-wrapper {
+    transition-timing-function: linear !important;
+  }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-400; }
+  .section-title { @apply text-2xl font-semibold tracking-tight text-slate-950 dark:text-slate-50 sm:text-3xl; }
+  .input { @apply block w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-900 placeholder:text-slate-400 transition focus:border-blue-400 focus:bg-white dark:border-slate-700 dark:bg-slate-950 dark:text-white; }
+
+  .course-explore-layout { display: grid; gap: 1.25rem; grid-template-columns: clamp(13rem, 26vw, 19.5rem) minmax(25rem, 1fr); }
+  .course-explore-results { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 25rem)); }
+  .course-progress-workspace { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) 23rem; }
+
+  @media (max-width: 767px) {
+    .course-explore-layout, .course-progress-workspace { grid-template-columns: minmax(0, 1fr); }
+    .course-explore-results { grid-template-columns: minmax(0, 1fr); }
+  }
+}

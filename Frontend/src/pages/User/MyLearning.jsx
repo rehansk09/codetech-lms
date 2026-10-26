@@ -1,0 +1,15 @@
+import React, { useEffect, useState } from "react";
+import { BookOpen, PlayCircle } from "lucide-react";
+import { Link } from "react-router-dom";
+import api from "@/utils/api";
+import Spinner from "../../component/Spinner";
+
+const MyLearning = () => {
+  const [courses, setCourses] = useState([]); const [loading, setLoading] = useState(true); const [error, setError] = useState("");
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+  useEffect(() => { const load = async () => { try { const { data } = await api.get(`/user/course/${user?._id}`); setCourses(Array.isArray(data.enrolledCourses) ? data.enrolledCourses : []); } catch { setError("Unable to load your courses."); } finally { setLoading(false); } }; if (user?._id) load(); else setLoading(false); }, [user?._id]);
+  if (loading) return <Spinner />;
+  if (error) return <div className="py-16 text-center text-red-600">{error}</div>;
+  return <section><header className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><div><p className="eyebrow">Your learning library</p><h1 className="mt-1 text-3xl font-semibold tracking-tight">My learning</h1><p className="mt-2 text-sm text-slate-500">Everything you’re enrolled in, ready when you are.</p></div><p className="rounded-full bg-blue-50 px-3 py-1.5 text-sm font-semibold text-blue-700 dark:bg-blue-950/60 dark:text-blue-300">{courses.length} enrolled</p></header>{courses.length ? <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">{courses.map((course) => <article key={course._id} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900"><img src={course.coursePic?.url} alt={course.courseName} className="aspect-[16/9] w-full object-cover transition duration-500 group-hover:scale-105" /><div className="p-5"><p className="text-xs font-semibold uppercase tracking-wide text-blue-600">{course.courseLevel || "Course"}</p><h2 className="mt-2 text-lg font-semibold">{course.courseName}</h2><p className="mt-1 text-sm text-slate-500">{course.creator?.name || "Codetech instructor"}</p><Link to={`/course-progress/${course._id}`} className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-blue-700">Continue learning <PlayCircle className="h-4 w-4" /></Link></div></article>)}</div> : <div className="mt-8 grid min-h-80 place-items-center rounded-3xl border border-dashed border-slate-300 bg-white text-center dark:border-slate-700 dark:bg-slate-900"><div><BookOpen className="mx-auto h-8 w-8 text-slate-400" /><h2 className="mt-3 text-lg font-semibold">Your learning library is empty</h2><p className="mt-1 text-sm text-slate-500">Find a course that fits your next goal.</p><Link to="/courseexplore" className="mt-4 inline-block rounded-xl bg-blue-600 px-4 py-2 text-sm font-semibold text-white">Explore courses</Link></div></div>}</section>;
+};
+export default MyLearning;
