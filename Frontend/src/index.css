@@ -26,6 +26,82 @@
   .course-explore-results { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 25rem)); }
   .course-progress-workspace { display: grid; gap: 1.5rem; grid-template-columns: minmax(0, 1fr) 23rem; }
 
+  .launch-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #030817;
+    color: #f8fafc;
+  }
+  .launch-loader__glow {
+    position: absolute;
+    width: min(42rem, 110vw);
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgb(37 99 235 / 0.30), rgb(30 64 175 / 0.09) 42%, transparent 70%);
+    animation: launch-pulse 2.4s ease-in-out infinite;
+  }
+  .launch-loader__content { position: relative; display: grid; justify-items: center; }
+  .launch-loader__mark {
+    display: grid;
+    width: 4.75rem;
+    height: 4.75rem;
+    place-items: center;
+    border: 1px solid rgb(96 165 250 / 0.6);
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, #2563eb, #0f2c77);
+    box-shadow: 0 0 0 0.6rem rgb(37 99 235 / 0.08), 0 1.2rem 3rem rgb(0 0 0 / 0.35);
+    font-size: 2.35rem;
+    font-weight: 800;
+    letter-spacing: -0.12em;
+    animation: launch-mark 1.2s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .launch-loader__brand {
+    margin-top: 1.4rem;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.07em;
+    animation: launch-rise 0.8s 0.18s both;
+  }
+  .launch-loader__brand span { color: #60a5fa; }
+  .launch-loader__tagline {
+    margin-top: 0.35rem;
+    color: #93c5fd;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    animation: launch-rise 0.8s 0.32s both;
+  }
+  .launch-loader__progress {
+    width: 10.5rem;
+    height: 0.25rem;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    background: rgb(148 163 184 / 0.20);
+  }
+  .launch-loader__progress span {
+    display: block;
+    width: 44%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #60a5fa, #2563eb, #93c5fd);
+    animation: launch-load 1.15s ease-in-out infinite;
+  }
+
+  @keyframes launch-mark { from { opacity: 0; transform: scale(.72) rotate(-10deg); } to { opacity: 1; transform: scale(1) rotate(0); } }
+  @keyframes launch-rise { from { opacity: 0; transform: translateY(0.75rem); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes launch-pulse { 0%, 100% { opacity: .65; transform: scale(.9); } 50% { opacity: 1; transform: scale(1.06); } }
+  @keyframes launch-load { 0% { transform: translateX(-120%); } 100% { transform: translateX(310%); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .launch-loader__glow, .launch-loader__mark, .launch-loader__brand, .launch-loader__tagline, .launch-loader__progress span { animation: none; }
+  }
+
   @media (max-width: 767px) {
     .course-explore-layout, .course-progress-workspace { grid-template-columns: minmax(0, 1fr); }
     .course-explore-results { grid-template-columns: minmax(0, 1fr); }

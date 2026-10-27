@@ -3,7 +3,7 @@ import CourseDetails from './pages/CourseDetails';
 import CourseExplore from './pages/CourseExplore';
 import Home from './pages/Home.jsx';
 import Playground from './pages/Playground';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import MainLayout from './component/MainLayout';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from './pages/instructor/Dashboard';
@@ -32,6 +32,7 @@ import { ToastContainer } from 'react-toastify';
 import RoleRoute from './utils/RoleRoute';
 import ProfilePage from './pages/ProfilePage';
 import PwaUpdatePrompt from './component/PwaUpdatePrompt';
+import LaunchLoader from './component/LaunchLoader';
 
 const appRouter = createBrowserRouter([
   {
@@ -169,6 +170,18 @@ const appRouter = createBrowserRouter([
 ]);
 
 function App() {
+  const [showLaunchLoader, setShowLaunchLoader] = useState(true);
+
+  useEffect(() => {
+    const launchTimer = window.setTimeout(() => {
+      setShowLaunchLoader(false);
+    }, 3400);
+
+    return () => window.clearTimeout(launchTimer);
+  }, []);
+
+  if (showLaunchLoader) return <LaunchLoader />;
+
   return (
     <main>
       <RouterProvider router={appRouter} />
