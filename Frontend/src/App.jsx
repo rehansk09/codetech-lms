@@ -180,13 +180,12 @@ function App() {
     return () => window.clearTimeout(launchTimer);
   }, []);
 
-  if (showLaunchLoader) return <LaunchLoader />;
-
   return (
     <main>
       <RouterProvider router={appRouter} />
       <ToastContainer/>
       <PwaUpdatePrompt />
+      {showLaunchLoader && <LaunchLoader />}
     </main>
   );
 }
