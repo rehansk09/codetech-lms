@@ -21,6 +21,8 @@
     pointer-events: none;
     border-radius: 9999px;
     background: #000;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px rgb(15 23 42 / 70%), 0 0 1rem rgb(15 23 42 / 35%);
     will-change: transform, opacity;
   }
 
