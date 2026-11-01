@@ -3,7 +3,7 @@ import CourseDetails from './pages/CourseDetails';
 import CourseExplore from './pages/CourseExplore';
 import Home from './pages/Home.jsx';
 import Playground from './pages/Playground';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import MainLayout from './component/MainLayout';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dashboard from './pages/instructor/Dashboard';
@@ -33,6 +33,7 @@ import RoleRoute from './utils/RoleRoute';
 import ProfilePage from './pages/ProfilePage';
 import PwaUpdatePrompt from './component/PwaUpdatePrompt';
 import LaunchLoader from './component/LaunchLoader';
+import CustomCursor from './component/CustomCursor';
 
 const appRouter = createBrowserRouter([
   {
@@ -185,6 +186,7 @@ function App() {
       <RouterProvider router={appRouter} />
       <ToastContainer/>
       <PwaUpdatePrompt />
+      <CustomCursor />
       {showLaunchLoader && <LaunchLoader />}
     </main>
   );
