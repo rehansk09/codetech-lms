@@ -11,25 +11,6 @@
 }
 
 @layer components {
-  .custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2147483647;
-    width: 1.25rem;
-    height: 1.25rem;
-    pointer-events: none;
-    border-radius: 9999px;
-    background: #000;
-    border: 2px solid #fff;
-    box-shadow: 0 0 0 1px rgb(15 23 42 / 70%), 0 0 1rem rgb(15 23 42 / 35%);
-    will-change: transform, opacity;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    body, body * { cursor: none !important; }
-  }
-
   .app-shell { @apply min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100; }
   .surface { @apply border border-slate-200/80 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900; }
   .page-frame { @apply mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8; }
