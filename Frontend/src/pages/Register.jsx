@@ -1,12 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { BookOpen, Check, Eye, EyeOff, GraduationCap, LockKeyhole, Mail, ShieldCheck, UserRound } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../utils/api";
 import authVisual from "../assets/auth-register-v2.png";
 
+const getStoredUser = () => {
+  try {
+    const storedUser = localStorage.getItem("user");
+    const user = storedUser ? JSON.parse(storedUser) : null;
+    return user && typeof user === "object" ? user : null;
+  } catch {
+    return null;
+  }
+};
+
 const Register = () => {
-  const user = localStorage.getItem("user");
+  const user = getStoredUser();
   const [formData, setFormData] = useState({ name: "", email: "", password: "", role: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);

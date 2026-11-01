@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Eye, EyeOff, LockKeyhole, Mail, Sparkles } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import api from "../utils/api";
 import authVisual from "../assets/auth-signin-v2.png";
 
+const getStoredUser = () => {
+  try {
+    const storedUser = localStorage.getItem("user");
+    const user = storedUser ? JSON.parse(storedUser) : null;
+    return user && typeof user === "object" ? user : null;
+  } catch {
+    return null;
+  }
+};
+
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
-  const user = localStorage.getItem("user");
+  const user = getStoredUser();
   const submit = async (event) => {
     event.preventDefault();
     setLoading(true);

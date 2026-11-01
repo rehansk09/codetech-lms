@@ -33,6 +33,7 @@ import RoleRoute from './utils/RoleRoute';
 import ProfilePage from './pages/ProfilePage';
 import PwaUpdatePrompt from './component/PwaUpdatePrompt';
 import LaunchLoader from './component/LaunchLoader';
+import CustomCursor from './component/CustomCursor';
 
 const appRouter = createBrowserRouter([
   {
@@ -185,6 +186,7 @@ function App() {
       <RouterProvider router={appRouter} />
       <ToastContainer/>
       <PwaUpdatePrompt />
+      <CustomCursor />
       {showLaunchLoader && <LaunchLoader />}
     </main>
   );
