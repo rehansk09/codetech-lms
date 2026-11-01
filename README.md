@@ -171,13 +171,6 @@ The API is organized by resource and is consumed by the React client.
 | `/api/assistant` | Authenticated Gemini-powered platform assistant |
 | `/api/playground` | Coding playground execution proxy |
 
-## Production Notes
-
-- Set `NODE_ENV=production`, `FRONTEND_URL`, and `VITE_API_URL` to your deployed HTTPS URLs. Cookie authentication uses secure, cross-site settings in production.
-- Register the Razorpay webhook at `POST /api/payments/razorpay/webhook` and use the same value for `RAZORPAY_WEBHOOK_SECRET`.
-- Configure MongoDB network access and Cloudinary credentials in your deployment provider's secret manager; never commit `.env` files.
-- Build the frontend with `npm run build` and deploy the generated `Frontend/dist` directory to a static host. Deploy `Backend` as a Node.js service.
-- The backend CORS allowlist includes `FRONTEND_URL` plus the standard Vite local URLs. Add further origins in `Backend/server.js` when required.
 
 ## Security
 
@@ -190,6 +183,3 @@ The API is organized by resource and is consumed by the React client.
 
 Contributions are welcome. Fork the repository, create a focused branch, make and verify your changes, then open a pull request with a clear description.
 
-## License
-
-No license has been specified yet. Add a `LICENSE` file before distributing or accepting contributions under a particular license.
