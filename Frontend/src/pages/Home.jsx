@@ -47,7 +47,7 @@ const Home = () => {
           duration: 0.8,
           stagger: 0.1,
           ease: "power3.out",
-        }
+        },
       );
 
       gsap.fromTo(
@@ -60,7 +60,7 @@ const Home = () => {
           duration: 1,
           delay: 0.25,
           ease: "power4.out",
-        }
+        },
       );
 
       gsap.utils.toArray(".reveal-section").forEach((section) => {
@@ -73,7 +73,7 @@ const Home = () => {
             duration: 0.75,
             ease: "power3.out",
             scrollTrigger: { trigger: section, start: "top 84%" },
-          }
+          },
         );
       });
 
@@ -123,11 +123,14 @@ const Home = () => {
             <span className="text-blue-600">Teach with impact.</span>
           </h1>
           <p className="hero-reveal mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-slate-300 sm:text-lg">
-            Create and sell courses, track learner progress, run assessments, and offer
-            instructor support from one modern learning platform.
+            Create and sell courses, track learner progress, run assessments,
+            and offer instructor support from one modern learning platform.
           </p>
           <div className="hero-reveal mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              whileHover={{ y: -3, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
               <Link
                 to="/register"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-xl shadow-slate-900/15 dark:bg-white dark:text-slate-950"
@@ -152,8 +155,12 @@ const Home = () => {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute -right-5 -top-5 hidden rounded-2xl border border-white/20 bg-white/90 px-4 py-3 text-left shadow-xl backdrop-blur lg:block"
           >
-            <p className="text-xs font-semibold text-slate-500">Learning streak</p>
-            <p className="mt-1 text-lg font-semibold text-slate-950">4 days ✦</p>
+            <p className="text-xs font-semibold text-slate-500">
+              Learning streak
+            </p>
+            <p className="mt-1 text-lg font-semibold text-slate-950">
+              4 days ✦
+            </p>
           </motion.div>
           <div className="overflow-hidden rounded-[1.6rem] bg-[#101827] p-5 text-left sm:p-8">
             <div className="flex items-center gap-2">
@@ -166,34 +173,40 @@ const Home = () => {
                 <p className="text-xs font-semibold uppercase tracking-[.16em] text-blue-300">
                   Learner dashboard
                 </p>
-                <p className="mt-4 text-lg font-semibold text-white">Welcome back, Alex.</p>
+                <p className="mt-4 text-lg font-semibold text-white">
+                  Welcome back, Alex.
+                </p>
                 <div className="mt-6 space-y-3">
-                  {["Resume your course", "Complete this lesson quiz", "Instructor meeting scheduled"].map(
-                    (item, index) => (
-                      <motion.div
-                        key={item}
-                        whileHover={{ x: 5 }}
-                        className="flex items-center gap-3 rounded-xl bg-white/5 p-3"
+                  {[
+                    "Resume your course",
+                    "Complete this lesson quiz",
+                    "Instructor meeting scheduled",
+                  ].map((item, index) => (
+                    <motion.div
+                      key={item}
+                      whileHover={{ x: 5 }}
+                      className="flex items-center gap-3 rounded-xl bg-white/5 p-3"
+                    >
+                      <span
+                        className={`grid h-7 w-7 place-items-center rounded-lg ${
+                          index === 0 ? "bg-blue-500" : "bg-white/10"
+                        }`}
                       >
-                        <span
-                          className={`grid h-7 w-7 place-items-center rounded-lg ${
-                            index === 0 ? "bg-blue-500" : "bg-white/10"
-                          }`}
-                        >
-                          {index === 0 ? (
-                            <Play className="h-3.5 w-3.5" />
-                          ) : (
-                            <CheckCircle2 className="h-3.5 w-3.5 text-slate-300" />
-                          )}
-                        </span>
-                        <span className="text-sm text-slate-200">{item}</span>
-                      </motion.div>
-                    )
-                  )}
+                        {index === 0 ? (
+                          <Play className="h-3.5 w-3.5" />
+                        ) : (
+                          <CheckCircle2 className="h-3.5 w-3.5 text-slate-300" />
+                        )}
+                      </span>
+                      <span className="text-sm text-slate-200">{item}</span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
               <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-blue-500/30 to-indigo-500/10 p-5 sm:p-7">
-                <p className="text-sm font-medium text-blue-100">JavaScript foundations</p>
+                <p className="text-sm font-medium text-blue-100">
+                  JavaScript foundations
+                </p>
                 <h2 className="mt-2 max-w-md text-3xl font-semibold tracking-tight text-white">
                   Continue learning, complete lessons, and track your progress.
                 </h2>
@@ -229,7 +242,9 @@ const Home = () => {
                       event.currentTarget.style.display = "none";
                     }}
                   />
-                  <span className="text-xl font-bold tracking-[-0.05em] text-white sm:text-2xl">{brand.name}</span>
+                  <span className="text-xl font-bold tracking-[-0.05em] text-white sm:text-2xl">
+                    {brand.name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -240,16 +255,30 @@ const Home = () => {
       <section className="reveal-section page-frame py-20 sm:py-28">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Built for better learning</p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em]">Everything your LMS needs, connected.</h2>
+          <h2 className="mt-3 text-4xl font-semibold tracking-[-0.04em]">
+            Everything your LMS needs, connected.
+          </h2>
           <p className="mt-4 text-slate-500">
-            From course discovery to completion certificates, Codetech keeps learners,
-            instructors, and learning progress in one connected place.
+            From course discovery to completion certificates, Codetech keeps
+            learners, instructors, and learning progress in one connected place.
           </p>
         </div>
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          <Feature icon={BookOpen} title="Structured course learning" copy="Give learners video lessons, curriculum modules, quizzes, and a clear path to finish." />
-          <Feature icon={UsersRound} title="Instructor support" copy="Let enrolled learners request one-to-one meetings when they need guidance." />
-          <Feature icon={Star} title="Track and certify progress" copy="Turn completed lessons and assessments into a certificate and learning record." />
+          <Feature
+            icon={BookOpen}
+            title="Structured course learning"
+            copy="Give learners video lessons, curriculum modules, quizzes, and a clear path to finish."
+          />
+          <Feature
+            icon={UsersRound}
+            title="Instructor support"
+            copy="Let enrolled learners request one-to-one meetings when they need guidance."
+          />
+          <Feature
+            icon={Star}
+            title="Track and certify progress"
+            copy="Turn completed lessons and assessments into a certificate and learning record."
+          />
         </div>
       </section>
 
@@ -258,30 +287,78 @@ const Home = () => {
       <section className="reveal-section border-y border-slate-800 bg-[#151515] py-20 text-white sm:py-24">
         <div className="page-frame py-0">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-300">The learning shift</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">Active learning vs. passive watching</h2>
-            <p className="mt-3 text-sm text-slate-400 sm:text-base">Why meaningful practice outperforms a static video catalog.</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-300">
+              The learning shift
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.045em] sm:text-4xl">
+              Active learning vs. passive watching
+            </h2>
+            <p className="mt-3 text-sm text-slate-400 sm:text-base">
+              Why meaningful practice outperforms a static video catalog.
+            </p>
           </div>
           <div className="mt-12 grid gap-5 lg:grid-cols-2">
-            <motion.article whileHover={{ y: -5 }} className="rounded-lg bg-[#1d1d1d] p-7 sm:p-8">
-              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-400"><X className="h-4 w-4 text-rose-300" />Traditional course platforms</p>
+            <motion.article
+              whileHover={{ y: -5 }}
+              className="rounded-lg bg-[#1d1d1d] p-7 sm:p-8"
+            >
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                <X className="h-4 w-4 text-rose-300" />
+                Traditional course platforms
+              </p>
               <ul className="mt-6 space-y-4 text-sm leading-6 text-slate-400">
-                <li className="flex gap-3"><X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />Long video playlists with little accountability.</li>
-                <li className="flex gap-3"><X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />Generic quizzes that measure recall, not real understanding.</li>
-                <li className="flex gap-3"><X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />One rigid sequence for every learner, regardless of progress.</li>
-                <li className="flex gap-3"><X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />Completion certificates without an ongoing learning record.</li>
+                <li className="flex gap-3">
+                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />
+                  Long video playlists with little accountability.
+                </li>
+                <li className="flex gap-3">
+                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />
+                  Generic quizzes that measure recall, not real understanding.
+                </li>
+                <li className="flex gap-3">
+                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />
+                  One rigid sequence for every learner, regardless of progress.
+                </li>
+                <li className="flex gap-3">
+                  <X className="mt-1 h-3.5 w-3.5 shrink-0 text-rose-300" />
+                  Completion certificates without an ongoing learning record.
+                </li>
               </ul>
-              <p className="mt-12 text-xs text-slate-500">Result: watching more, retaining less.</p>
+              <p className="mt-12 text-xs text-slate-500">
+                Result: watching more, retaining less.
+              </p>
             </motion.article>
-            <motion.article whileHover={{ y: -5 }} className="rounded-lg border border-white/5 bg-gradient-to-br from-[#303030] to-[#292929] p-7 sm:p-8">
-              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-blue-300"><CheckCircle2 className="h-4 w-4 text-cyan-300" />Codetech learning experience</p>
+            <motion.article
+              whileHover={{ y: -5 }}
+              className="rounded-lg border border-white/5 bg-gradient-to-br from-[#303030] to-[#292929] p-7 sm:p-8"
+            >
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-blue-300">
+                <CheckCircle2 className="h-4 w-4 text-cyan-300" />
+                Codetech learning experience
+              </p>
               <ul className="mt-6 space-y-4 text-sm leading-6 text-slate-100">
-                <li className="flex gap-3"><Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />Structured courses with clear next steps and progress tracking.</li>
-                <li className="flex gap-3"><Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />Knowledge checks that reinforce the lessons you complete.</li>
-                <li className="flex gap-3"><Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />Direct meeting requests when you need instructor support.</li>
-                <li className="flex gap-3"><Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />Certificates and a personal library that captures your progress.</li>
+                <li className="flex gap-3">
+                  <Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />
+                  Structured courses with clear next steps and progress
+                  tracking.
+                </li>
+                <li className="flex gap-3">
+                  <Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />
+                  Knowledge checks that reinforce the lessons you complete.
+                </li>
+                <li className="flex gap-3">
+                  <Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />
+                  Direct meeting requests when you need instructor support.
+                </li>
+                <li className="flex gap-3">
+                  <Zap className="mt-1 h-3.5 w-3.5 shrink-0 text-cyan-300" />
+                  Certificates and a personal library that captures your
+                  progress.
+                </li>
               </ul>
-              <p className="mt-12 text-xs font-medium text-cyan-300">Result: a clearer path from first lesson to real progress.</p>
+              <p className="mt-12 text-xs font-medium text-cyan-300">
+                Result: a clearer path from first lesson to real progress.
+              </p>
             </motion.article>
           </div>
         </div>
@@ -289,10 +366,20 @@ const Home = () => {
 
       <section className="reveal-section page-frame py-20 text-center">
         <div className="mx-auto max-w-2xl rounded-[2rem] bg-blue-600 px-6 py-14 text-white shadow-xl shadow-blue-600/20">
-          <p className="text-sm font-semibold text-blue-100">Start your learning journey</p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-tight">Join courses built to help you grow.</h2>
-          <motion.div whileHover={{ y: -3, scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-            <Link to="/register" className="mt-7 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-blue-700">
+          <p className="text-sm font-semibold text-blue-100">
+            Start your learning journey
+          </p>
+          <h2 className="mt-3 text-4xl font-semibold tracking-tight">
+            Join courses built to help you grow.
+          </h2>
+          <motion.div
+            whileHover={{ y: -3, scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Link
+              to="/register"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-blue-700"
+            >
               Create learner account <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
@@ -302,18 +389,26 @@ const Home = () => {
       <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
         <div className="page-frame grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <Link to="/" className="text-xl font-bold tracking-tight text-slate-950 dark:text-white">
+            <Link
+              to="/"
+              className="text-xl font-bold tracking-tight text-slate-950 dark:text-white"
+            >
               Codetech<span className="text-blue-600">.</span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-6 text-slate-500">
-              The learning platform for discovering courses, teaching students, and tracking meaningful progress.
+              The learning platform for discovering courses, teaching students,
+              and tracking meaningful progress.
             </p>
             <div className="mt-6 flex gap-3">
               {[Github, Linkedin, Instagram].map((Icon) => (
                 <motion.a
                   key={Icon.displayName || Icon.name}
                   href="#top"
-                  whileHover={{ y: -3, backgroundColor: "#2563eb", color: "#ffffff" }}
+                  whileHover={{
+                    y: -3,
+                    backgroundColor: "#2563eb",
+                    color: "#ffffff",
+                  }}
                   aria-label="Codetech social link"
                   className="grid h-9 w-9 place-items-center rounded-xl border border-slate-200 text-slate-500 dark:border-slate-700 dark:text-slate-300"
                 >
@@ -322,14 +417,42 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <FooterColumn title="Platform" links={[['Explore courses', '/courseexplore'], ['Pricing', '/pricing'], ['Create an account', '/register']]} />
-          <FooterColumn title="Learning" links={[['My dashboard', '/dashboard'], ['Sign in', '/login'], ['Support meetings', '/dashboard']]} />
-          <FooterColumn title="Company" links={[['Home', '/'], ['For instructors', '/register'], ['Contact', 'mailto:hello@codetec.com']]} />
+          <FooterColumn
+            title="Platform"
+            links={[
+              ["Explore courses", "/courseexplore"],
+              ["Pricing", "/pricing"],
+              ["Create an account", "/register"],
+            ]}
+          />
+          <FooterColumn
+            title="Learning"
+            links={[
+              ["My dashboard", "/dashboard"],
+              ["Sign in", "/login"],
+              ["Support meetings", "/dashboard"],
+            ]}
+          />
+          <FooterColumn
+            title="Company"
+            links={[
+              ["Home", "/"],
+              ["For instructors", "/register"],
+              ["Contact", "mailto:hello@codetec.com"],
+            ]}
+          />
         </div>
         <div className="border-t border-slate-200 dark:border-slate-800">
           <div className="page-frame flex flex-col gap-3 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Codetech. Learning, thoughtfully made.</p>
-            <div className="flex gap-5"><span>Privacy</span><span>Terms</span><span>Accessibility</span></div>
+            <p>
+              © {new Date().getFullYear()} Codetech. Learning, thoughtfully
+              made.
+            </p>
+            <div className="flex gap-5">
+              <span>Privacy</span>
+              <span>Terms</span>
+              <span>Accessibility</span>
+            </div>
           </div>
         </div>
       </footer>
@@ -360,14 +483,26 @@ const Feature = ({ icon: Icon, title, copy }) => (
 
 const FooterColumn = ({ title, links }) => (
   <div>
-    <h3 className="text-sm font-semibold text-slate-950 dark:text-white">{title}</h3>
+    <h3 className="text-sm font-semibold text-slate-950 dark:text-white">
+      {title}
+    </h3>
     <ul className="mt-4 space-y-3">
       {links.map(([label, href]) => (
         <li key={label}>
           {href.startsWith("mailto:") ? (
-            <a href={href} className="text-sm text-slate-500 transition hover:text-blue-600">{label}</a>
+            <a
+              href={href}
+              className="text-sm text-slate-500 transition hover:text-blue-600"
+            >
+              {label}
+            </a>
           ) : (
-            <Link to={href} className="text-sm text-slate-500 transition hover:text-blue-600">{label}</Link>
+            <Link
+              to={href}
+              className="text-sm text-slate-500 transition hover:text-blue-600"
+            >
+              {label}
+            </Link>
           )}
         </li>
       ))}

@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { BookOpen, ChevronDown, Grid2X2, LogOut, Menu, UserRound, X } from "lucide-react";
+import {
+  BookOpen,
+  ChevronDown,
+  Grid2X2,
+  LogOut,
+  Menu,
+  UserRound,
+  X,
+} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import DarkModeToggle from "./DarkModeToggle";
 import NotificationBell from "./NotificationBell";
@@ -91,7 +99,7 @@ const Navbar = () => {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/30 bg-white/55 shadow-[0_8px_30px_rgb(15_23_42/0.04)] backdrop-blur-2xl dark:border-white/5 dark:bg-slate-950/55 dark:shadow-black/10">
       <nav
-        className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto_1fr] items-center px-4 sm:h-[4.5rem] sm:px-6 lg:px-8"
+        className="mx-auto grid h-16 max-w-7xl grid-cols-[1fr_auto] items-center px-4 sm:h-[4.5rem] sm:px-6 md:grid-cols-[1fr_auto_1fr] lg:px-8"
         aria-label="Main navigation"
       >
         <div className="flex min-w-0 items-center">
@@ -100,7 +108,10 @@ const Navbar = () => {
             className="font-bold tracking-tight text-slate-950 dark:text-white"
             onClick={closeMobile}
           >
-            <span className="text-xl"><span className="text-blue-800 dark:text-blue-400">C</span>odetech<span className="text-blue-800 dark:text-blue-400">.</span></span>
+            <span className="text-xl">
+              <span className="text-blue-800 dark:text-blue-400">C</span>odetech
+              <span className="text-blue-800 dark:text-blue-400">.</span>
+            </span>
           </Link>
         </div>
         <div className="hidden items-center gap-1 md:flex">
@@ -279,7 +290,10 @@ const Navbar = () => {
                 Explore courses
               </Link>
               <div className="mt-2 flex items-center justify-between border-t pt-3 dark:border-slate-800">
-                <div className="flex items-center gap-1"><InstallAppButton mobile /><DarkModeToggle /></div>
+                <div className="flex items-center gap-1">
+                  <InstallAppButton mobile />
+                  <DarkModeToggle />
+                </div>
                 {user ? (
                   <div className="flex items-center gap-1">
                     <NotificationBell userId={user._id} />
