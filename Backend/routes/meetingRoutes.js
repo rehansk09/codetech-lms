@@ -79,14 +79,14 @@ router.get("/:id/join", isAuthenticated, async (req, res) => {
     const meeting = await Meeting.findById(req.params.id);
     if (!meeting || meeting.status !== "scheduled") return res.status(404).json({ message: "Scheduled meeting not found" });
     if (![meeting.studentId.toString(), meeting.instructorId.toString()].includes(req.id)) return res.status(403).json({ message: "You are not invited to this meeting" });
-    const now = Date.now();
-    const start = new Date(meeting.meetingTime).getTime();
-    if (now < start - 30 * 60 * 1000 || now > start + 3 * 60 * 60 * 1000) return res.status(403).json({ message: "This meeting can be joined from 30 minutes before its scheduled time until 3 hours after" });
-    const user = await User.findById(req.id).select("name");
+    // const now = Date.now();
+    // const start = new Date(meeting.meetingTime).getTime();
+    // if (now < start - 30 * 60 * 1000 || now > start + 3 * 60 * 60 * 1000) return res.status(403).json({ message: "This meeting can be joined from 30 minutes before its scheduled time until 3 hours after" });
+    const { name } = await User.findById(req.id).select("name");
     const appID = Number(process.env.ZEGO_APP_ID);
     const serverSecret = process.env.ZEGO_SERVER_SECRET;
     if (!appID || !serverSecret) return res.status(503).json({ message: "Video calling is not configured. Ask the administrator to add Zego credentials." });
-    const kitToken = createZegoKitToken({ appID, serverSecret, roomID: meeting.roomID, userID: req.id.toString(), userName: user.name });
+    const kitToken = createZegoKitToken({ appID, serverSecret, roomID: meeting.roomID, userID: req.id.toString(), userName: name });
     res.json({ appID, kitToken, meeting: { title: meeting.meetingTitle, meetingTime: meeting.meetingTime } });
   } catch (error) { console.error("Join meeting error:", error); res.status(500).json({ message: "Unable to join meeting" }); }
 });
